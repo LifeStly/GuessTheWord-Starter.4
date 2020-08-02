@@ -25,8 +25,24 @@ import androidx.lifecycle.ViewModel
  * ViewModel containing all the logic needed to run the game
  */
 class GameViewModel : ViewModel() {
+    private val timer: CountDownTimer
 
+    companion object {
 
+        // Time when the game is over
+        private const val DONE = 0L
+
+        // Countdown time interval
+        private const val ONE_SECOND = 1000L
+
+        // Total time for the game
+        private const val COUNTDOWN_TIME = 60000L
+
+    }
+    // Countdown time
+    private val _currentTime = MutableLiveData<Long>()
+    val currentTime: LiveData<Long>
+        get() = _currentTime
     // The current word
     private val _word = MutableLiveData<String>()
     val word: LiveData<String>
